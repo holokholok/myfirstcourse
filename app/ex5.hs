@@ -8,7 +8,11 @@ magicCoin'' :: Bool -> Bool
 magicCoin'' True  = True
 magicCoin'' False = True
 
-
+--可以咁理解：
+--increment a = a + 1
+--increment = a -> a + 1
+--increment _ = a + 1
+--increment = _ -> a + 1
 
 not' :: Bool -> Bool
 not' True = False
