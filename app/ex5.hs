@@ -29,3 +29,50 @@ magicBool :: Bool -> (Bool -> Bool)
 magicBool = \_ -> magicCoin
 
 --呢句就係一個叫做\_既function 會出左另一個叫做magicCoin既function 
+
+magicBool'1 = \_ -> \_ -> True
+
+-- 原本係咁︿
+
+
+
+magicBool'2 :: Bool -> Bool -> Bool
+magicBool'2 = \_ _ -> True
+--呢個係同magicBool'1一樣的
+
+
+magicBool'' :: Bool -> Bool -> Bool
+magicBool'' _ _ = True
+--呢個都係同magicBool'1一樣的，所以叫syntax sugar
+
+eitherTrue :: Bool -> Bool -> Bool
+eitherTrue False False = False
+eitherTrue _     _     = True 
+
+plus :: Int -> Int -> Int
+plus x y = x + y
+
+plus' :: Int -> Int -> Int
+plus' = \x -> \y -> x + y
+
+increment :: Int -> Int
+increment = plus 1
+
+increment' :: Int -> Int
+increment' = (\x -> \y -> x + y) 1
+
+--          （     function     ）parameter 
+
+additionResult :: Int
+additionResult = plus 100 25
+
+-- 結果就係125 
+
+add :: Int -> Int -> Int
+add x y = x + y
+
+--一般會由右邊括起箭咀，好似咁︰
+
+
+add :: Int -> (Int -> Int)
+add = \x -> (\y -> x + y)
